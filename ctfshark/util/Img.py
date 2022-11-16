@@ -8,16 +8,14 @@ class Img:
     ctfshark.util.Img
     '''
     def __init__(self, path_or_img: Any):
-        if not isinstance(path_or_img, (Img, str, np.array)): 
+        if not isinstance(path_or_img, (Img, str)): 
             raise TypeError(
-                f"type of 'path_or_img' must be ctfshark.util.Img, 'str'(path) or 'np.array'(img), "
+                f"type of 'path_or_img' must be ctfshark.util.Img, or 'str'(path)"
                 f"not '{type(path_or_img).__name__}'"
             )
 
         if isinstance(path_or_img, str):
             self._img = imread(path_or_img)
-        elif isinstance(path_or_img, np.array):
-            self._img = path_or_img
         else:
             self._img = path_or_img._img
     
